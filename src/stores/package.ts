@@ -5,6 +5,7 @@ import { ref } from 'vue'
 export const usePackageStore = defineStore('package', () => {
   const packageVersions = ref<any>([])
   const loading = ref(true)
+  const searchParams = ref('')
 
   async function getPackage() {
     try {
@@ -18,6 +19,7 @@ export const usePackageStore = defineStore('package', () => {
   return {
     packageVersions,
     loading,
-    getPackage
+    getPackage,
+    searchParams
   }
 })

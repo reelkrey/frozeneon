@@ -22,7 +22,7 @@
     font-size: 42px;
     padding: 10px;
     border-radius: 20px;
-    color: #ffffff;
+    color: #fff;
     background-color: hsl(201, 64%, 42%);
   }
 
