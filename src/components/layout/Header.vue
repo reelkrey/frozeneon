@@ -8,9 +8,8 @@
 <style lang="scss" scoped>
 .header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 90px;
   margin-bottom: 40px;
 
   @media (max-width: 840px) {

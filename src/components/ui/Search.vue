@@ -36,7 +36,7 @@ const packageStore = usePackageStore()
 .button {
   color: #fff;
   background-color: hsl(210, 100%, 1%);
-  padding: 10px;
-  border-radius: 10px;
+  padding: 10px 20px;
+  border-radius: 30px;
 }
 </style>
