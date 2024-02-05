@@ -1,6 +1,6 @@
 <template>
-  <div>
+  <main>
     <Header />
     <RouterView />
-  </div>
+  </main>
 </template>
