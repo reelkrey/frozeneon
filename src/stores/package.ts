@@ -3,12 +3,12 @@ import { packageService } from '@/services/package'
 import { ref } from 'vue'
 
 export const usePackageStore = defineStore('package', () => {
-  const packages = ref<[]>([])
+  const packageItem = ref<any>([])
   const loading = ref(true)
 
   async function getPackage() {
     try {
-      packages.value = await packageService.getPackage()
+      packageItem.value = await packageService.getPackage()
       loading.value = false
     } catch (error) {
       console.log(error)
@@ -16,7 +16,7 @@ export const usePackageStore = defineStore('package', () => {
   }
 
   return {
-    packages,
+    packageItem,
     loading,
     getPackage
   }
