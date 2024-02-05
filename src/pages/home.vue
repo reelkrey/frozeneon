@@ -10,5 +10,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div>hello : {{ packageStore.packageItem }}</div>
+  <div>
+    <PackageVersions :packageVersions="packageStore.packageVersions.versions" />
+  </div>
 </template>
