@@ -1,7 +1,7 @@
 import api from '@/services/api'
 
-async function getPackage() {
-  const response = await api.get('/axios')
+async function getPackage(packageItem: any) {
+  const response = await api.get(`/${packageItem}`)
   return response.data
 }
 

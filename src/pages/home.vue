@@ -1,14 +1,21 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, computed } from 'vue'
 import { usePackageStore } from '@/stores/package'
 
 const packageStore = usePackageStore()
+const packageVersions = computed(() => packageStore.packageVersions.versions)
+const isLoading = computed(() => packageStore.packageVersions.loading)
 
 onMounted(async () => {
-  await packageStore.getPackage()
+  await packageStore.getPackage(packageStore.searchParams)
 })
 </script>
 
 <template>
-  <div>hello : {{ packageStore.packageItem }}</div>
+  <div>
+    <div v-if="isLoading">Загрузка...</div>
+    <div v-if="packageVersions">
+      <PackageVersions :packageVersions="packageVersions" />
+    </div>
+  </div>
 </template>
