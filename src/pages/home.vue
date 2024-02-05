@@ -7,7 +7,7 @@ const packageVersions = computed(() => packageStore.packageVersions.versions)
 const isLoading = computed(() => packageStore.packageVersions.loading)
 
 onMounted(async () => {
-  await packageStore.getPackage()
+  await packageStore.getPackage(packageStore.searchParams)
 })
 </script>
 

@@ -2,12 +2,10 @@
 import { usePackageStore } from '@/stores/package'
 
 const packageStore = usePackageStore()
-
-function searchPackage() {}
 </script>
 
 <template>
-  <form class="form" @submit.prevent="searchPackage">
+  <form class="form" @submit.prevent="packageStore.getPackage(packageStore.searchParams)">
     <input
       class="input"
       type="text"
