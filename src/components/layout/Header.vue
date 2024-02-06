@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="header__logo">
-      <div class="header__logo-link">Frozeneon</div>
+      <router-link class="header__logo-link" to="/"> Frozeneon </router-link>
     </div>
     <Search />
   </header>
@@ -25,6 +25,11 @@
     border-radius: 20px;
     color: #fff;
     background-color: hsl(201, 64%, 42%);
+    transition: all 0.3s;
+
+    &:hover {
+      scale: 1.05;
+    }
   }
 
   &__logo-link {

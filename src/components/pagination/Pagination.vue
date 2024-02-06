@@ -30,6 +30,13 @@ defineProps<Props>()
     list-style: none;
   }
 
+  &__item {
+    transition: all 0.3s;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
   &__item-link {
     color: #000;
     font-size: 18px;

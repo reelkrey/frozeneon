@@ -27,6 +27,12 @@ defineProps<Props>()
     border: 1px solid #000;
     border-radius: 20px;
     margin-bottom: 20px;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.02);
+    }
   }
   &__item-name {
     font-weight: 700;
