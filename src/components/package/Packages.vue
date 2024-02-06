@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import type { IPackage } from '@/common/types/package'
+
 type Props = {
-  packages: []
+  packages: IPackage[]
 }
 defineProps<Props>()
 </script>
