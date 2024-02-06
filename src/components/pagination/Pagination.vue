@@ -1,19 +1,12 @@
 <script setup lang="ts">
-import { range } from '@/composables/range'
-import { computed } from 'vue'
-
 type Props = {
   total: number
   limit: number
   currentPage: number
   url: string
+  pages: number
 }
-const props = defineProps<Props>()
-
-const pages = computed(() => {
-  const pagesCount = Math.ceil(props.total / props.limit)
-  return range(1, pagesCount)
-})
+defineProps<Props>()
 </script>
 
 <template>
