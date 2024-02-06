@@ -14,33 +14,9 @@ onClickOutside(modal, modalStore.closeModal)
     <div class="modal" ref="modal">
       <div class="modal__wrapper">
         <ul class="modal__list">
-          <li class="modal__item">
-            <span class="modal__item-span">name: </span>
-            {{ modalStore.packageItem?.name }}
-          </li>
-          <li class="modal__item">
-            <span class="modal__item-span">type:</span>
-            {{ modalStore.packageItem?.type }}
-          </li>
-          <li class="modal__item">
-            <span class="modal__item-span">self link:</span>
-            {{ modalStore.packageItem?.links.self }}
-          </li>
-          <li class="modal__item">
-            <span class="modal__item-span">versions link:</span>
-            {{ modalStore.packageItem?.links.versions }}
-          </li>
-          <li class="modal__item">
-            <span class="modal__item-span">prev hints:</span>
-            {{ modalStore.packageItem?.prev.hits }}
-          </li>
-          <li class="modal__item">
-            <span class="modal__item-span">prev bandwidth:</span>
-            {{ modalStore.packageItem?.prev.bandwidth }}
-          </li>
-          <li class="modal__item">
-            <span class="modal__item-span">hits:</span>
-            {{ modalStore.packageItem?.hits }}
+          <li class="modal__item" v-for="(value, key) in modalStore.packageItem" :key="key">
+            <span class="modal__item-span key">{{ key }}:</span>
+            <span class="modal__item-span">{{ value }}</span>
           </li>
         </ul>
         <button class="modal__button" @click="modalStore.closeModal">✖</button>
@@ -72,13 +48,20 @@ onClickOutside(modal, modalStore.closeModal)
   }
 
   &__item {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
     border: 1px solid #000;
     border-radius: 20px;
     padding: 10px 20px;
   }
 
   &__item-span {
-    font-weight: 700;
+    display: block;
+
+    &.key {
+      font-weight: 700;
+    }
   }
 
   &__button {
