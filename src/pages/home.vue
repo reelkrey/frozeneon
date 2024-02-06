@@ -37,6 +37,7 @@ watch(currentPage, async () => {
       </div>
     </div>
     <Pagination v-if="packages" :current-page="currentPage" :url="baseUrl" :pages="10" />
+    <Modal />
   </div>
 </template>
 

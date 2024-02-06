@@ -1,14 +1,22 @@
 <script setup lang="ts">
 import type { IPackage } from '@/common/types/package'
+import { useModalStore } from '@/stores/modal'
 
 type Props = {
   packages: IPackage[]
 }
 defineProps<Props>()
+
+const modalStore = useModalStore()
 </script>
 
 <template>
-  <li class="package__item" v-for="packageItem in packages" :key="packageItem.name">
+  <li
+    class="package__item"
+    v-for="packageItem in packages"
+    :key="packageItem.name"
+    @click="modalStore.openModal(packageItem)"
+  >
     <div>
       <span class="package__item-name">name :</span>
       {{ packageItem.name }}

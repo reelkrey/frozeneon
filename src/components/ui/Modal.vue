@@ -3,32 +3,47 @@ import { onClickOutside } from '@vueuse/core'
 import { useModalStore } from '@/stores/modal'
 import { ref } from 'vue'
 
-type Props = {
-  modalActive: boolean
-  modalType: string
-}
-defineProps<Props>()
-
 const modalStore = useModalStore()
 const modal = ref(null)
 
-onClickOutside(modal, modalStore.closeDetailsModal)
-onClickOutside(modal, modalStore.closeCreateModal)
+onClickOutside(modal, modalStore.closeModal)
 </script>
 
 <template>
-  <div class="overlay" v-if="modalActive">
+  <div class="overlay" v-if="modalStore.isActive">
     <div class="modal" ref="modal">
       <div class="modal__wrapper">
-        <slot></slot>
-
-        <button
-          v-if="modalType === 'details'"
-          class="modal__button"
-          @click="modalStore.closeDetailsModal"
-        >
-          ✖
-        </button>
+        <ul class="modal__list">
+          <li class="modal__item">
+            <span class="modal__item-span">name: </span>
+            {{ modalStore.packageItem?.name }}
+          </li>
+          <li class="modal__item">
+            <span class="modal__item-span">type:</span>
+            {{ modalStore.packageItem?.type }}
+          </li>
+          <li class="modal__item">
+            <span class="modal__item-span">self link:</span>
+            {{ modalStore.packageItem?.links.self }}
+          </li>
+          <li class="modal__item">
+            <span class="modal__item-span">versions link:</span>
+            {{ modalStore.packageItem?.links.versions }}
+          </li>
+          <li class="modal__item">
+            <span class="modal__item-span">prev hints:</span>
+            {{ modalStore.packageItem?.prev.hits }}
+          </li>
+          <li class="modal__item">
+            <span class="modal__item-span">prev bandwidth:</span>
+            {{ modalStore.packageItem?.prev.bandwidth }}
+          </li>
+          <li class="modal__item">
+            <span class="modal__item-span">hits:</span>
+            {{ modalStore.packageItem?.hits }}
+          </li>
+        </ul>
+        <button class="modal__button" @click="modalStore.closeModal">✖</button>
       </div>
     </div>
   </div>
@@ -48,6 +63,22 @@ onClickOutside(modal, modalStore.closeCreateModal)
     border-radius: 20px;
     background-color: #fefefe;
     box-shadow: 3px 4px 20.2px 0px #e8e8e8;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__item {
+    border: 1px solid #000;
+    border-radius: 20px;
+    padding: 10px 20px;
+  }
+
+  &__item-span {
+    font-weight: 700;
   }
 
   &__button {
