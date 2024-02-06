@@ -18,7 +18,7 @@
   }
 
   &__logo {
-    font-size: 42px;
+    font-size: 30px;
     padding: 10px;
     border-radius: 20px;
     color: #fff;

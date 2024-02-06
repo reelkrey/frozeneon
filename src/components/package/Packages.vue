@@ -1,12 +1,12 @@
 <script setup lang="ts">
 type Props = {
-  packageVersions: []
+  packages: []
 }
 defineProps<Props>()
 </script>
 
 <template>
   <ul>
-    <PackageVersion :packageVersions="packageVersions" />
+    <Package :packages="packages" />
   </ul>
 </template>

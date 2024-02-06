@@ -1,10 +1,11 @@
+import { IPackage } from '@/common/types/package'
 import api from '@/services/api'
 
-async function getPackage(packageItem: any) {
-  const response = await api.get(`/${packageItem}`)
+async function getPopularPackages() {
+  const response = await api.get<IPackage[]>(`/stats/packages`)
   return response.data
 }
 
 export const packageService = {
-  getPackage
+  getPopularPackages
 }

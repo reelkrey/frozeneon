@@ -1,19 +1,10 @@
 <script setup lang="ts">
-import { usePackageStore } from '@/stores/package'
-import { ref } from 'vue'
-
-const packageStore = usePackageStore()
-const searchParams = ref('')
-
-function searchPackege() {
-  packageStore.getPackage(searchParams)
-  searchParams.value = ''
-}
+function searchPackege() {}
 </script>
 
 <template>
   <form class="form" @submit.prevent="searchPackege">
-    <input class="input" type="text" placeholder="Поиск по названию" v-model="searchParams" />
+    <input class="input" type="text" placeholder="Поиск по названию" />
     <button class="button" type="submit">Поиск</button>
   </form>
 </template>
@@ -37,7 +28,7 @@ function searchPackege() {
 
 .button {
   color: #fff;
-  background-color: hsl(210, 100%, 1%);
+  background-color: hsl(201, 64%, 42%);
   padding: 10px 20px;
   border-radius: 30px;
 }
