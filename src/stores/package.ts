@@ -4,15 +4,16 @@ import type { IPackage } from '@/common/types/package'
 import { ref } from 'vue'
 
 export const usePackageStore = defineStore('package', () => {
-  const packages = ref<IPackage[] | IPackage | []>([])
+  const packages = ref<IPackage[] | IPackage | null>()
   const isLoading = ref(true)
   const isFailed = ref(false)
+  const packageFiltered = ref<IPackage | null>(null)
 
   async function getPopularPackages(page: number) {
     try {
       isLoading.value = true
       isFailed.value = false
-      packages.value = []
+      packages.value = null
       packages.value = await packageService.getPopularPackages(page)
       isLoading.value = false
     } catch (error) {
@@ -26,8 +27,8 @@ export const usePackageStore = defineStore('package', () => {
     try {
       isLoading.value = true
       isFailed.value = false
-      packages.value = []
-      packages.value = await packageService.searchPackage(name)
+      packages.value = null
+      packageFiltered.value = await packageService.searchPackage(name)
       isLoading.value = false
     } catch (error) {
       isLoading.value = false
@@ -39,9 +40,9 @@ export const usePackageStore = defineStore('package', () => {
   return {
     packages,
     isLoading,
-
     getPopularPackages,
     searchPackage,
-    isFailed
+    isFailed,
+    packageFiltered
   }
 })

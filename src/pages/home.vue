@@ -2,10 +2,12 @@
 import { onMounted, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePackageStore } from '@/stores/package'
+import PackageFiltered from '@/components/package/PackageFiltered.vue'
 
 const route = useRoute()
 const packageStore = usePackageStore()
 const packages = computed(() => packageStore.packages)
+const packageFiltered = computed(() => packageStore.packageFiltered)
 const isLoading = computed(() => packageStore.isLoading)
 const isFailed = computed(() => packageStore.isFailed)
 const currentPage = computed(() => Number(route.query.limit || '1'))
@@ -26,10 +28,15 @@ watch(currentPage, async () => {
     <div v-if="isFailed">
       <span>Ничего не найденно</span>
     </div>
-    <div v-if="packages" class="home__inner">
-      <Packages class="packages" :packages="packages" />
-      <Pagination :current-page="currentPage" :url="baseUrl" :pages="10" />
+    <div class="home__inner">
+      <div v-if="packages">
+        <Packages class="packages" :packages="packages" />
+      </div>
+      <div v-if="packageFiltered">
+        <PackageFiltered />
+      </div>
     </div>
+    <Pagination v-if="packages" :current-page="currentPage" :url="baseUrl" :pages="10" />
   </div>
 </template>
 
@@ -41,7 +48,7 @@ watch(currentPage, async () => {
   justify-content: space-between;
 }
 
-.packages {
+.home__inner {
   min-height: 70vh;
 }
 </style>
