@@ -5,8 +5,8 @@ import { ref } from 'vue'
 const packageStore = usePackageStore()
 const searchParams = ref('')
 
-function searchPackege() {
-  packageStore.searchPackage(searchParams.value)
+async function searchPackege() {
+  await packageStore.searchPackage(searchParams.value)
   searchParams.value = ''
 }
 </script>
