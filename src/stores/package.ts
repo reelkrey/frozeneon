@@ -8,20 +8,11 @@ export const usePackageStore = defineStore('package', () => {
   const loading = ref(true)
   const searchParams = ref('axios')
 
-  async function getPopularPackages() {
+  async function getPopularPackages(page: number) {
     try {
+      loading.value = true
       packages.value = []
-      packages.value = await packageService.getPopularPackages()
-      loading.value = false
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  async function getPopularPackagesByPage(page: number) {
-    try {
-      packages.value = []
-      packages.value = await packageService.getPopularPackagesByPage(page)
+      packages.value = await packageService.getPopularPackages(page)
       loading.value = false
     } catch (error) {
       console.log(error)
@@ -32,7 +23,6 @@ export const usePackageStore = defineStore('package', () => {
     packages,
     loading,
     searchParams,
-    getPopularPackages,
-    getPopularPackagesByPage
+    getPopularPackages
   }
 })

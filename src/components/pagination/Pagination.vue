@@ -46,7 +46,7 @@ const pages = computed(() => {
     border-radius: 5px;
 
     &.active {
-      color: #fff !important;
+      color: #fff;
       background-color: hsl(201, 64%, 42%);
     }
   }

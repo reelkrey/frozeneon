@@ -1,6 +1,8 @@
 <template>
   <header class="header">
-    <span class="header__logo">Frozeneon</span>
+    <div class="header__logo">
+      <router-link class="header__logo-link" to="/">Frozeneon</router-link>
+    </div>
     <Search />
   </header>
 </template>
@@ -25,16 +27,8 @@
     background-color: hsl(201, 64%, 42%);
   }
 
-  &__button {
-    white-space: nowrap;
+  &__logo-link {
     color: #fff;
-    border-radius: 30px;
-    background: #303030;
-    padding: 12px 25px;
-
-    @media (max-width: 840px) {
-      align-self: flex-end;
-    }
   }
 }
 </style>
