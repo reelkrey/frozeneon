@@ -6,7 +6,8 @@ import { usePackageStore } from '@/stores/package'
 const route = useRoute()
 const packageStore = usePackageStore()
 const packages = computed(() => packageStore.packages)
-const isLoading = computed(() => packageStore.loading)
+const isLoading = computed(() => packageStore.isLoading)
+const isFailed = computed(() => packageStore.isFailed)
 const currentPage = computed(() => Number(route.query.limit || '1'))
 const baseUrl = computed(() => route.path)
 
@@ -22,6 +23,9 @@ watch(currentPage, async () => {
 <template>
   <div class="home">
     <div v-if="isLoading">Загрузка...</div>
+    <div v-if="isFailed">
+      <span>Ничего не найденно</span>
+    </div>
     <div v-if="packages" class="home__inner">
       <Packages class="packages" :packages="packages" />
       <Pagination :current-page="currentPage" :url="baseUrl" :pages="10" />
