@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, computed, ref } from 'vue'
+import { onMounted, computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePackageStore } from '@/stores/package'
 
@@ -17,13 +17,14 @@ onMounted(async () => {
   total.value = packages.value.length
 })
 
-console.log(route.path)
+watch(currentPage, async () => {
+  await packageStore.getPopularPackagesByPage(currentPage.value)
+})
 </script>
 
 <template>
   <div>
     <div v-if="isLoading">Загрузка...</div>
-    {{}}
     <div v-if="packages">
       <Packages :packages="packages" />
       <Pagination :total="total" :limit="limit" :current-page="currentPage" :url="baseUrl" />

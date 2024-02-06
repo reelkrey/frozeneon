@@ -6,6 +6,12 @@ async function getPopularPackages() {
   return response.data
 }
 
+async function getPopularPackagesByPage(page: number) {
+  const response = await api.get<IPackage[]>(`stats/packages?limit=10&page=${page}`)
+  return response.data
+}
+
 export const packageService = {
-  getPopularPackages
+  getPopularPackages,
+  getPopularPackagesByPage
 }
