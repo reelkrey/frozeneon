@@ -1,4 +1,4 @@
-import { IPackage } from '@/common/types/package'
+import type { IPackage } from '@/common/types/package'
 import api from '@/services/api'
 
 async function getPopularPackages() {
