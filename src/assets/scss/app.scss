@@ -1,13 +1,11 @@
 @import '@/assets/scss/variables.scss';
 
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
 a {
   text-decoration: none;
-  color: #fff;
+}
+
+html {
+  padding: 20px;
 }
 
 * {
@@ -53,7 +51,6 @@ dd {
 
 /* Выставляем основные настройки по-умолчанию для body */
 body {
-  min-height: 100vh;
   text-rendering: optimizeSpeed;
   background: #f2f2f2;
   padding: 10px;
