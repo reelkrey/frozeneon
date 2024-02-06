@@ -33,11 +33,17 @@ const pages = computed(() => {
 <style lang="scss" scoped>
 .pagination {
   &__list {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
     list-style: none;
   }
 
   &__item-link {
     color: #000;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
 
     &.active {
       color: #fff !important;
