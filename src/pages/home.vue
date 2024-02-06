@@ -24,9 +24,9 @@ watch(currentPage, async () => {
 
 <template>
   <div class="home">
-    <div v-if="isLoading">Загрузка...</div>
+    <div v-if="isLoading">Loading...</div>
     <div v-if="isFailed">
-      <span>Ничего не найденно</span>
+      <span>Nothing there...</span>
     </div>
     <div class="home__inner">
       <div v-if="packages">

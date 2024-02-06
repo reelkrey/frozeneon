@@ -13,8 +13,8 @@ async function searchPackage() {
 
 <template>
   <form class="form" @submit.prevent="searchPackage">
-    <input class="input" type="text" placeholder="Поиск по названию" v-model="searchParams" />
-    <button class="button" type="submit">Поиск</button>
+    <input class="input" type="text" placeholder="Search ..." v-model="searchParams" />
+    <button class="button" type="submit">Find</button>
   </form>
 </template>
 
