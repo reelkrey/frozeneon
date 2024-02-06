@@ -6,6 +6,12 @@ async function getPopularPackages(page: number) {
   return response.data
 }
 
+async function searchPackage(name: string) {
+  const response = await api.get<IPackage>(`/packages/npm/${name}`)
+  return response.data
+}
+
 export const packageService = {
-  getPopularPackages
+  getPopularPackages,
+  searchPackage
 }

@@ -10,6 +10,7 @@ declare module 'vue' {
     Header: typeof import('./src/components/layout/Header.vue')['default']
     Modal: typeof import('./src/components/ui/Modal.vue')['default']
     Package: typeof import('./src/components/package/Package.vue')['default']
+    PackageFiltered: typeof import('./src/components/package/PackageFiltered.vue')['default']
     Packages: typeof import('./src/components/package/Packages.vue')['default']
     Packagess: typeof import('./src/components/package/Packagess.vue')['default']
     PackageVersion: typeof import('./src/components/package/PackageVersion.vue')['default']
