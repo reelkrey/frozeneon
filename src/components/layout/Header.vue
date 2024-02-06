@@ -1,13 +1,7 @@
-<script setup lang="ts">
-import { usePackageStore } from '@/stores/package'
-
-const packageStore = usePackageStore()
-</script>
-
 <template>
   <header class="header">
     <div class="header__logo">
-      <router-link class="header__logo-link" to="/">Frozeneon</router-link>
+      <div class="header__logo-link">Frozeneon</div>
     </div>
     <Search />
   </header>
