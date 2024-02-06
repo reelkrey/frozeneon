@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { usePackageStore } from '@/stores/package'
+
+const packageStore = usePackageStore()
+</script>
+
 <template>
   <header class="header">
     <div class="header__logo">
