@@ -1,12 +1,11 @@
 @import '@/assets/scss/variables.scss';
 
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
 a {
   text-decoration: none;
+}
+
+html {
+  padding: 20px;
 }
 
 * {

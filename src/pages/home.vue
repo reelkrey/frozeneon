@@ -1,19 +1,23 @@
 <script setup lang="ts">
 import { onMounted, computed, ref } from 'vue'
+import { useRoute } from 'vue-router'
 import { usePackageStore } from '@/stores/package'
 
+const route = useRoute()
 const packageStore = usePackageStore()
 const packages = computed(() => packageStore.packages)
 const isLoading = computed(() => packageStore.loading)
+const currentPage = computed(() => Number(route.query.limit || '1'))
+const baseUrl = computed(() => route.path)
 const total = ref(0)
 const limit = ref(10)
-const currentPage = ref(5)
-const url = ref('/')
 
 onMounted(async () => {
   await packageStore.getPopularPackages()
   total.value = packages.value.length
 })
+
+console.log(route.path)
 </script>
 
 <template>
@@ -22,7 +26,7 @@ onMounted(async () => {
     {{}}
     <div v-if="packages">
       <Packages :packages="packages" />
-      <Pagination :total="total" :limit="limit" :current-page="currentPage" :url="url" />
+      <Pagination :total="total" :limit="limit" :current-page="currentPage" :url="baseUrl" />
     </div>
   </div>
 </template>
