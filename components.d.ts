@@ -14,6 +14,7 @@ declare module 'vue' {
     Packagess: typeof import('./src/components/package/Packagess.vue')['default']
     PackageVersion: typeof import('./src/components/package/PackageVersion.vue')['default']
     PackageVersions: typeof import('./src/components/package/PackageVersions.vue')['default']
+    Pagination: typeof import('./src/components/pagination/Pagination.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Search: typeof import('./src/components/search/Search.vue')['default']
