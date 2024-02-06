@@ -5,7 +5,6 @@ import { ref } from 'vue'
 
 export const usePackageStore = defineStore('package', () => {
   const packages = ref<IPackage[] | IPackage | []>([])
-  const searchParams = ref('')
   const isLoading = ref(true)
   const isFailed = ref(false)
 
@@ -40,7 +39,7 @@ export const usePackageStore = defineStore('package', () => {
   return {
     packages,
     isLoading,
-    searchParams,
+
     getPopularPackages,
     searchPackage,
     isFailed
