@@ -24,13 +24,7 @@ watch(currentPage, async () => {
     <div v-if="isLoading">Загрузка...</div>
     <div v-if="packages" class="home__inner">
       <Packages class="packages" :packages="packages" />
-      <Pagination
-        :total="total"
-        :limit="limit"
-        :current-page="currentPage"
-        :url="baseUrl"
-        :pages="10"
-      />
+      <Pagination :current-page="currentPage" :url="baseUrl" :pages="10" />
     </div>
   </div>
 </template>

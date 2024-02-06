@@ -1,7 +1,5 @@
 <script setup lang="ts">
 type Props = {
-  total: number
-  limit: number
   currentPage: number
   url: string
   pages: number
