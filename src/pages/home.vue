@@ -41,7 +41,7 @@ watch(currentPage, async () => {
       <button class="home__button" @click="goBack">back</button>
       <span class="home__span">Nothing there...</span>
     </div>
-    <div class="home__inner">
+    <div class="home__inner" v-esle>
       <div v-if="packages">
         <Packages class="packages" :packages="packages" />
       </div>
