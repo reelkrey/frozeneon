@@ -1,11 +1,9 @@
 import { defineStore } from 'pinia'
 import { packageService } from '@/services/package'
 import type { IPackage } from '@/common/types/package'
-import { useRoute } from 'vue-router'
 import { ref } from 'vue'
 
 export const usePackageStore = defineStore('package', () => {
-  const route = useRoute()
   const packages = ref<IPackage[] | null>()
   const packageFiltered = ref<IPackage | null>(null)
   const isLoading = ref(true)
@@ -33,7 +31,6 @@ export const usePackageStore = defineStore('package', () => {
       packageFiltered.value = null
       isFailed.value = false
       packages.value = null
-      currentRoute.value = route.query.limit || '1'
       packageFiltered.value = await packageService.searchPackage(name)
       isLoading.value = false
     } catch (error) {
