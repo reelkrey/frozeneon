@@ -56,7 +56,7 @@ onClickOutside(modal, modalStore.closeModal)
     max-height: 500px;
     overflow-y: auto;
 
-    @media (max-width: 650px) {
+    @media (max-width: 700px) {
       max-width: 300px;
     }
 
