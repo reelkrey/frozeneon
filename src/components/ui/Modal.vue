@@ -3,32 +3,23 @@ import { onClickOutside } from '@vueuse/core'
 import { useModalStore } from '@/stores/modal'
 import { ref } from 'vue'
 
-type Props = {
-  modalActive: boolean
-  modalType: string
-}
-defineProps<Props>()
-
 const modalStore = useModalStore()
 const modal = ref(null)
 
-onClickOutside(modal, modalStore.closeDetailsModal)
-onClickOutside(modal, modalStore.closeCreateModal)
+onClickOutside(modal, modalStore.closeModal)
 </script>
 
 <template>
-  <div class="overlay" v-if="modalActive">
+  <div class="overlay" v-if="modalStore.isActive">
     <div class="modal" ref="modal">
       <div class="modal__wrapper">
-        <slot></slot>
-
-        <button
-          v-if="modalType === 'details'"
-          class="modal__button"
-          @click="modalStore.closeDetailsModal"
-        >
-          ✖
-        </button>
+        <ul class="modal__list">
+          <li class="modal__item" v-for="(value, key) in modalStore.packageItem" :key="key">
+            <span class="modal__item-span key">{{ key }}:</span>
+            <span class="modal__item-span">{{ value }}</span>
+          </li>
+        </ul>
+        <button class="modal__button" @click="modalStore.closeModal">✖</button>
       </div>
     </div>
   </div>
@@ -48,6 +39,31 @@ onClickOutside(modal, modalStore.closeCreateModal)
     border-radius: 20px;
     background-color: #fefefe;
     box-shadow: 3px 4px 20.2px 0px #e8e8e8;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    border: 1px solid #000;
+    border-radius: 20px;
+    padding: 10px 20px;
+  }
+
+  &__item-span {
+    display: block;
+
+    &.key {
+      font-weight: 700;
+    }
   }
 
   &__button {
