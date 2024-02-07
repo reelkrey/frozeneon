@@ -2,7 +2,6 @@
 import { onMounted, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePackageStore } from '@/stores/package'
-import PackageFiltered from '@/components/package/PackageFiltered.vue'
 
 const route = useRoute()
 const packageStore = usePackageStore()
@@ -15,6 +14,10 @@ const baseUrl = computed(() => route.path)
 
 onMounted(async () => {
   await packageStore.getPopularPackages(currentPage.value)
+
+  if (route.query.package) {
+    await packageStore.searchPackage(`${route.query.package}`)
+  }
 })
 
 watch(currentPage, async () => {

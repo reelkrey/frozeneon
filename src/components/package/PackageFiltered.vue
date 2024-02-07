@@ -7,16 +7,19 @@ const modalStore = useModalStore()
 </script>
 
 <template>
-  <div
-    class="package__item"
-    v-if="packageStore.packageFiltered"
-    @click="modalStore.openModal(packageStore.packageFiltered)"
-  >
-    <div>
-      <span class="package__item-name">name :</span>
-      {{ packageStore.packageFiltered?.name }}
+  <div>
+    <button>back</button>
+    <div
+      class="package__item"
+      v-if="packageStore.packageFiltered"
+      @click="modalStore.openModal(packageStore.packageFiltered)"
+    >
+      <div>
+        <span class="package__item-name">name :</span>
+        {{ packageStore.packageFiltered?.name }}
+      </div>
+      <div class="package__item-type">{{ packageStore.packageFiltered?.type }}</div>
     </div>
-    <div class="package__item-type">{{ packageStore.packageFiltered?.type }}</div>
   </div>
 </template>
 
