@@ -8,6 +8,22 @@ html {
   padding: 20px;
 }
 
+html,
+body,
+#app,
+main {
+  height: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

@@ -41,7 +41,7 @@ watch(currentPage, async () => {
       <button class="home__button" @click="goBack">back</button>
       <span class="home__span">Nothing there...</span>
     </div>
-    <div class="home__inner">
+    <div class="home__inner" v-else>
       <div v-if="packages">
         <Packages class="packages" :packages="packages" />
       </div>
@@ -61,12 +61,17 @@ watch(currentPage, async () => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: auto;
 
   &__inner {
     min-height: 70vh;
   }
 
   &__button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #fff;
+    background-color: hsl(201, 64%, 42%);
     margin-bottom: 20px;
   }
 
