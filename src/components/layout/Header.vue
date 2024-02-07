@@ -1,8 +1,6 @@
 <template>
   <header class="header">
-    <div class="header__logo">
-      <router-link class="header__logo-link" to="/"> Frozeneon </router-link>
-    </div>
+    <div class="header__logo">Frozeneon</div>
     <Search />
   </header>
 </template>

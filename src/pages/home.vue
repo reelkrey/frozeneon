@@ -13,11 +13,18 @@ const currentPage = computed(() => Number(route.query.limit || '1'))
 const baseUrl = computed(() => route.path)
 
 onMounted(async () => {
-  await packageStore.getPopularPackages(currentPage.value)
+  if (currentPage.value) {
+    await packageStore.getPopularPackages(currentPage.value)
+  }
+  if (route.query.package) {
+    await packageStore.searchPackage(`${route.query.package}`)
+  }
 })
 
 watch(currentPage, async () => {
-  await packageStore.getPopularPackages(currentPage.value)
+  if (!route.query.package) {
+    await packageStore.getPopularPackages(currentPage.value)
+  }
 })
 </script>
 
