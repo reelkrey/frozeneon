@@ -23,11 +23,6 @@
     border-radius: 20px;
     color: #fff;
     background-color: hsl(201, 64%, 42%);
-    transition: all 0.3s;
-
-    &:hover {
-      scale: 1.05;
-    }
   }
 
   &__logo-link {

@@ -14,24 +14,24 @@ async function goBack() {
 </script>
 
 <template>
-  <div>
-    <button @click="goBack">back</button>
+  <div class="package-filtered">
+    <button class="package-filtered__button" @click="goBack">back</button>
     <div
-      class="package__item"
+      class="package-filtered__item"
       v-if="packageStore.packageFiltered"
       @click="modalStore.openModal(packageStore.packageFiltered)"
     >
       <div>
-        <span class="package__item-name">name :</span>
+        <span class="package-filtered__item-name">name :</span>
         {{ packageStore.packageFiltered?.name }}
       </div>
-      <div class="package__item-type">{{ packageStore.packageFiltered?.type }}</div>
+      <div class="package-filtered__item-type">{{ packageStore.packageFiltered?.type }}</div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.package {
+.package-filtered {
   &__item {
     display: flex;
     justify-content: space-between;
@@ -49,6 +49,9 @@ async function goBack() {
   }
   &__item-name {
     font-weight: 700;
+  }
+  &__button {
+    margin-bottom: 20px;
   }
   &__item-type {
     padding: 10px;
