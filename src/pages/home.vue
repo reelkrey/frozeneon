@@ -14,10 +14,6 @@ const baseUrl = computed(() => route.path)
 
 onMounted(async () => {
   await packageStore.getPopularPackages(currentPage.value)
-
-  if (route.query.package) {
-    await packageStore.searchPackage(`${route.query.package}`)
-  }
 })
 
 watch(currentPage, async () => {
