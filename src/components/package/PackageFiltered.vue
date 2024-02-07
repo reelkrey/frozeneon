@@ -1,11 +1,17 @@
 <script setup lang="ts">
+import { useModalStore } from '@/stores/modal'
 import { usePackageStore } from '@/stores/package'
 
 const packageStore = usePackageStore()
+const modalStore = useModalStore()
 </script>
 
 <template>
-  <div class="package__item">
+  <div
+    class="package__item"
+    v-if="packageStore.packageFiltered"
+    @click="modalStore.openModal(packageStore.packageFiltered)"
+  >
     <div>
       <span class="package__item-name">name :</span>
       {{ packageStore.packageFiltered?.name }}
@@ -24,6 +30,12 @@ const packageStore = usePackageStore()
     border: 1px solid #000;
     border-radius: 20px;
     margin-bottom: 20px;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.02);
+    }
   }
   &__item-name {
     font-weight: 700;

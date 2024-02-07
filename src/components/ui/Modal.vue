@@ -45,6 +45,8 @@ onClickOutside(modal, modalStore.closeModal)
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-height: 500px;
+    overflow-y: auto;
   }
 
   &__item {
