@@ -39,6 +39,10 @@ onClickOutside(modal, modalStore.closeModal)
     border-radius: 20px;
     background-color: #fefefe;
     box-shadow: 3px 4px 20.2px 0px #e8e8e8;
+
+    @media (max-width: 840px) {
+      padding: 40px;
+    }
   }
 
   &__list {
@@ -47,6 +51,10 @@ onClickOutside(modal, modalStore.closeModal)
     gap: 10px;
     max-height: 500px;
     overflow-y: auto;
+
+    @media (max-width: 650px) {
+      max-width: 300px;
+    }
   }
 
   &__item {
@@ -56,6 +64,7 @@ onClickOutside(modal, modalStore.closeModal)
     border: 1px solid #000;
     border-radius: 20px;
     padding: 10px 20px;
+    overflow-x: auto;
   }
 
   &__item-span {
