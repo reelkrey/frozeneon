@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <main>
+    <Header />
     <RouterView />
-  </div>
+    <Footer />
+  </main>
 </template>

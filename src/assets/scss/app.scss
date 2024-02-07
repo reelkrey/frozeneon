@@ -1,13 +1,27 @@
 @import '@/assets/scss/variables.scss';
 
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
 a {
   text-decoration: none;
-  color: #fff;
+}
+
+html {
+  padding: 20px;
+}
+
+html,
+body,
+#app,
+main {
+  height: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
 }
 
 * {
@@ -53,9 +67,9 @@ dd {
 
 /* Выставляем основные настройки по-умолчанию для body */
 body {
-  min-height: 100vh;
   text-rendering: optimizeSpeed;
   background: #f2f2f2;
+  padding: 10px;
 }
 
 /* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
