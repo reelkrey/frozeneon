@@ -78,6 +78,10 @@ onClickOutside(modal, modalStore.closeModal)
   &__item-span {
     display: block;
 
+    @media (max-width: 500px) {
+      font-size: 14px;
+    }
+
     &.key {
       font-weight: 700;
     }
