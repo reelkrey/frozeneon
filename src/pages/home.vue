@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { onMounted, computed, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { usePackageStore } from '@/stores/package'
 
 const route = useRoute()
+const router = useRouter()
 const packageStore = usePackageStore()
 const packages = computed(() => packageStore.packages)
 const packageFiltered = computed(() => packageStore.packageFiltered)
@@ -11,6 +12,11 @@ const isLoading = computed(() => packageStore.isLoading)
 const isFailed = computed(() => packageStore.isFailed)
 const currentPage = computed(() => Number(route.query.limit || '1'))
 const baseUrl = computed(() => route.path)
+
+async function goBack() {
+  router.push({ path: '/', query: { limit: packageStore.currentRoute } })
+  await packageStore.getPopularPackages(packageStore.currentRoute)
+}
 
 onMounted(async () => {
   if (currentPage.value) {
@@ -32,13 +38,15 @@ watch(currentPage, async () => {
   <div class="home">
     <div v-if="isLoading">Loading...</div>
     <div v-if="isFailed">
-      <span>Nothing there...</span>
+      <button class="home__button" @click="goBack">back</button>
+      <span class="home__span">Nothing there...</span>
     </div>
     <div class="home__inner">
       <div v-if="packages">
         <Packages class="packages" :packages="packages" />
       </div>
       <div v-if="packageFiltered">
+        <button class="home__button" @click="goBack">back</button>
         <PackageFiltered />
       </div>
     </div>
@@ -53,9 +61,17 @@ watch(currentPage, async () => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
 
-.home__inner {
-  min-height: 70vh;
+  &__inner {
+    min-height: 70vh;
+  }
+
+  &__button {
+    margin-bottom: 20px;
+  }
+
+  &__span {
+    display: block;
+  }
 }
 </style>

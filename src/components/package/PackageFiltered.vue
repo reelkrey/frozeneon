@@ -1,21 +1,13 @@
 <script setup lang="ts">
 import { useModalStore } from '@/stores/modal'
 import { usePackageStore } from '@/stores/package'
-import { useRouter } from 'vue-router'
 
 const packageStore = usePackageStore()
 const modalStore = useModalStore()
-const router = useRouter()
-
-async function goBack() {
-  router.push({ path: '/', query: { limit: packageStore.currentRoute } })
-  await packageStore.getPopularPackages(packageStore.currentRoute)
-}
 </script>
 
 <template>
   <div class="package-filtered">
-    <button class="package-filtered__button" @click="goBack">back</button>
     <div
       class="package-filtered__item"
       v-if="packageStore.packageFiltered"
@@ -49,9 +41,6 @@ async function goBack() {
   }
   &__item-name {
     font-weight: 700;
-  }
-  &__button {
-    margin-bottom: 20px;
   }
   &__item-type {
     padding: 10px;
