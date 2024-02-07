@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { usePackageStore } from '@/stores/package'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const packageStore = usePackageStore()
 const searchParams = ref('')
+const router = useRouter()
 
 async function searchPackage() {
+  router.push({ path: '/', query: { package: searchParams.value } })
   await packageStore.searchPackage(searchParams.value)
   searchParams.value = ''
 }
@@ -32,6 +35,10 @@ async function searchPackage() {
 
   &::placeholder {
     color: #a8a8a8;
+  }
+
+  @media (max-width: 650px) {
+    min-width: 0;
   }
 }
 

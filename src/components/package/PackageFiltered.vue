@@ -7,21 +7,23 @@ const modalStore = useModalStore()
 </script>
 
 <template>
-  <div
-    class="package__item"
-    v-if="packageStore.packageFiltered"
-    @click="modalStore.openModal(packageStore.packageFiltered)"
-  >
-    <div>
-      <span class="package__item-name">name :</span>
-      {{ packageStore.packageFiltered?.name }}
+  <div class="package-filtered">
+    <div
+      class="package-filtered__item"
+      v-if="packageStore.packageFiltered"
+      @click="modalStore.openModal(packageStore.packageFiltered)"
+    >
+      <div>
+        <span class="package-filtered__item-name">name :</span>
+        {{ packageStore.packageFiltered?.name }}
+      </div>
+      <div class="package-filtered__item-type">{{ packageStore.packageFiltered?.type }}</div>
     </div>
-    <div class="package__item-type">{{ packageStore.packageFiltered?.type }}</div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.package {
+.package-filtered {
   &__item {
     display: flex;
     justify-content: space-between;

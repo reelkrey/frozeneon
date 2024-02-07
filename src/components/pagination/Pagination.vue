@@ -28,6 +28,10 @@ defineProps<Props>()
     justify-content: center;
     gap: 15px;
     list-style: none;
+
+    @media (max-width: 650px) {
+      gap: 0px;
+    }
   }
 
   &__item {
@@ -42,6 +46,10 @@ defineProps<Props>()
     font-size: 18px;
     padding: 10px;
     border-radius: 5px;
+
+    @media (max-width: 650px) {
+      padding: 5px;
+    }
 
     &.active {
       color: #fff;
