@@ -61,6 +61,7 @@ watch(currentPage, async () => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: auto;
 
   &__inner {
     min-height: 70vh;
