@@ -43,6 +43,10 @@ onClickOutside(modal, modalStore.closeModal)
     @media (max-width: 840px) {
       padding: 40px;
     }
+
+    @media (max-width: 500px) {
+      padding: 40px 20px;
+    }
   }
 
   &__list {
@@ -54,6 +58,10 @@ onClickOutside(modal, modalStore.closeModal)
 
     @media (max-width: 650px) {
       max-width: 300px;
+    }
+
+    @media (max-width: 500px) {
+      max-width: 250px;
     }
   }
 

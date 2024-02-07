@@ -36,6 +36,10 @@ async function searchPackage() {
   &::placeholder {
     color: #a8a8a8;
   }
+
+  @media (max-width: 650px) {
+    min-width: 0;
+  }
 }
 
 .button {
