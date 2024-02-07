@@ -67,6 +67,10 @@ watch(currentPage, async () => {
   }
 
   &__button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #fff;
+    background-color: hsl(201, 64%, 42%);
     margin-bottom: 20px;
   }
 
