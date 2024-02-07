@@ -73,6 +73,7 @@ onClickOutside(modal, modalStore.closeModal)
     border-radius: 20px;
     padding: 10px 20px;
     overflow-x: auto;
+    max-height: 150px;
   }
 
   &__item-span {
